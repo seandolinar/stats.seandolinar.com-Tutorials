@@ -32,7 +32,7 @@ pop_mean <- mean(height)
 
 #tall-biased sample
 cut <- 1:25000
-weights <- cut^.6 * 0 + 1
+weights <- cut^.6
 sorted_height <- sort(height)
 set.seed(123)
 height_sample_biased <- sample(sorted_height, size=n, prob=weights)
@@ -44,9 +44,9 @@ sample_sd <- sd(height_sample_biased)
 #t-stat
 t <- (sample_mean - pop_mean) / (sample_sd/sqrt(n))
 
-#p-value for t-tes
-pt(t,n-1)
+#p-value for t-test
+1-pt(t,n-1)
 
 
-pt(2.5706, 5)
+
 
