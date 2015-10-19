@@ -5,6 +5,7 @@ c <- c(3,5,5,5,10,8)
 d <- c(10,20,30,40,50,55)
 e <- c(7,8,9,4,6,10)
 
+
 #create matrix from vectors
 M <- cbind(a,b,c,d,e)
 k <- ncol(M) #number of variables
@@ -17,7 +18,8 @@ M_mean <- matrix(data=1, nrow=n) %*% cbind(mean(a),mean(b),mean(c),mean(d),mean(
 D <- M - M_mean
 
 #creates the covariance matrix
-C <- k^-1 * t(D) %*% D
+C <- (n-1)^-1 * t(D) %*% D #sample covariance [matches cov()]
+C <- (n)^-1 * t(D) %*% D #population covariance
 
 
 
